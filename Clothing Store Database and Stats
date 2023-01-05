@@ -1,0 +1,50 @@
+--Created a clothing store database
+
+CREATE TABLE clothings (
+id INTEGER PRIMARY KEY,
+name TEXT, 
+size TEXT,
+color TEXT,
+cost REAL);
+
+INSERT INTO clothings VALUES (1, "Olivia", "S", "Red", 90);
+INSERT INTO clothings VALUES (2, "Dan", "M", "Brown", 45);
+INSERT INTO clothings VALUES (3, "Serena", "XS", "Gold", 100);
+INSERT INTO clothings VALUES (4, "Blair", "S", "Purple", 95);
+INSERT INTO clothings VALUES (5, "Nate", "L", "Blue", 80);
+INSERT INTO clothings VALUES (6, "Chuck", "L", "Black", 125);
+INSERT INTO clothings VALUES (7, "Vannesa", "XL", "Gray", 30);
+INSERT INTO clothings VALUES (8, "Carter", "XL", "Blue", 85);
+INSERT INTO clothings VALUES (9, "Jenny", "XS", "Pink", 55);
+INSERT INTO clothings VALUES (10, "Olivia", "M", "Red", 90);
+INSERT INTO clothings VALUES (11, "Dan", "XL", "Brown", 45);
+INSERT INTO clothings VALUES (12, "Serena", "S", "Gold", 100);
+INSERT INTO clothings VALUES (13, "Blair", "XS", "Purple", 95);
+INSERT INTO clothings VALUES (14, "Nate", "L", "Blue", 80);
+INSERT INTO clothings VALUES (15, "Chuck", "M", "Black", 125);
+INSERT INTO clothings VALUES (16, "Vannesa", "L", "Gray", 30);
+INSERT INTO clothings VALUES (17, "Carter", "L", "Blue", 85);
+INSERT INTO clothings VALUES (18, "Jenny", "S", "Pink", 55);
+
+--display the database ordered by price
+SELECT * FROM clothings ORDER BY cost;
+
+--what is the total sum price of all the clothings?
+SELECT SUM(cost) FROM clothings;
+
+--which clothings cost more then $90? display name and cost of clothings
+SElECT name,cost FROM clothings WHERE cost >90;
+
+--what are the most 6 expensive clothings?
+SELECT name, cost, color, size
+FROM clothings
+ORDER BY cost desc
+LIMIT 6;
+
+
+
+
+
+
+
+
