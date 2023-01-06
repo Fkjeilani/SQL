@@ -1,0 +1,63 @@
+CREATE TABLE nba_players_scoring_stats22 (
+rank INTEGER PRIMARY KEY, 
+player TEXT,
+position TEXT,
+game_played INTEGER,
+points_per_game INTEGER,
+team TEXT);
+
+INSERT INTO nba_players_scoring_stats22 VALUES (1, "luka_doncic", "point_guard", 35, 34.3, "mavericks");
+INSERT INTO nba_players_scoring_stats22 VALUES (2, "joel_embiid", "center", 28,33.5, "76ers");
+INSERT INTO nba_players_scoring_stats22 VALUES (3,"giannis_antetokounmpo","power_forward", 32, 32.7, "bucks");
+INSERT INTO nba_players_scoring_stats22 VALUES (4, "Shai_Gilgeous-Alexander", "point_guard", 34, 30.9, "thunder");
+INSERT INTO nba_players_scoring_stats22 VALUES (5, "jayson_tatum", "small_forward", 36, 30.8, "celtics");
+INSERT INTO nba_players_scoring_stats22 VALUES (6, "kevin_durant", "power_forward", 37, 29.9, "nets");
+INSERT INTO nba_players_scoring_stats22 VALUES (7, "donovan_mitchell", "shooting_guard", 35, 29.0, "cavaliers");
+INSERT INTO nba_players_scoring_stats22 VALUES (8, "lebron_james", "small_forward", 29, 29.0, "lakers");
+INSERT INTO nba_players_scoring_stats22 VALUES (9, "trae_young", "point_guard", 34, 27.3, "hawks");
+INSERT INTO nba_players_scoring_stats22 VALUES (10, "jaylen_brown", "shooting_guard",36, 27.2, "celtics");
+
+
+SELECT * FROM nba_players_scoring_stats22;
+
+
+*/ what is the average, max, and min points per game? */
+
+SELECT player, AVG(points_per_game) AS avg_points_per_game, MAX(points_per_game) AS max_points_per_game, MIN(points_per_game) AS min_points_per_game 
+FROM nba_players_scoring_stats22
+GROUP BY team;
+
+
+*/ which team had more then 25 points average per game? */
+
+SELECT team, COUNT(*) as num_player
+FROM nba_players_scoring_stats22
+GROUP BY team
+HAVING AVG(points_per_game) >= 25;
+
+
+*/ how can we change positions to player type, from point guard to backcourt, small forward to frontcourt, and anything else to center? */
+
+SELECT player,
+    CASE
+        WHEN position = 'point_guard' THEN 'Backcourt'
+        WHEN position = 'small_forward' THEN 'Frontcourt'
+        ELSE 'Center'
+    END AS player_type
+FROM nba_players_scoring_stats22;
+
+
+*/ which player had at least 25 points per game and the game played are at least 30? */
+
+SELECT *
+FROM nba_players_scoring_stats22
+WHERE points_per_game >= 25 AND game_played >= 30;
+
+
+*/which player had at least 25 points per game or the game played are at least 20? */
+
+SELECT *
+FROM nba_players_scoring_stats22
+WHERE points_per_game >= 25 OR game_played >= 20;
+
+
