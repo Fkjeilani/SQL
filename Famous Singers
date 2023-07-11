@@ -1,0 +1,60 @@
+CREATE TABLE singers (
+  id INTEGER PRIMARY KEY,
+  name TEXT,
+  song TEXT,
+  country TEXT
+);
+
+CREATE TABLE albums (
+  id INTEGER PRIMARY KEY,
+  singer_id INTEGER,
+  album_name TEXT,
+  release_year INTEGER);
+
+INSERT INTO singers (id, name, song, country)
+VALUES
+  (1, 'Adele', 'Rolling in the Deep', 'United Kingdom'),
+  (2, 'Taylor Swift', 'Love Story', 'United States'),
+  (3, 'Ed Sheeran', 'Shape of You', 'United Kingdom'),
+  (4, 'Beyoncé', 'Crazy in Love', 'United States'),
+  (5, 'Justin Bieber', 'Baby', 'Canada'),
+  (6, 'Rihanna', 'Umbrella', 'Barbados'),
+  (7, 'Bruno Mars', 'Just the Way You Are', 'United States'),
+  (8, 'Shawn Mendes', 'Stitches', 'Canada'),
+  (9, 'Adele', 'Someone Like You', 'United Kingdom'),
+  (10, 'Shakira', 'Hips Don''t Lie', 'Colombia'),
+  (11, 'Ariana Grande', 'Thank U, Next', 'United States'),
+  (12, 'Katy Perry', 'Firework', 'United States'),
+  (13, 'Michael Jackson', 'Thriller', 'United States'),
+  (14, 'Elton John', 'Your Song', 'United Kingdom'),
+  (15, 'Freddie Mercury', 'Bohemian Rhapsody', 'United Kingdom');
+
+INSERT INTO albums (id, singer_id, album_name, release_year)
+VALUES
+  (1, 1, '21', 2011),
+  (2, 1, '25', 2015),
+  (3, 2, 'Fearless', 2008),
+  (4, 2, '1989', 2014),
+  (5, 3, '+', 2011),
+  (6, 3, 'x', 2014),
+  (7, 4, 'Dangerously in Love', 2003),
+  (8, 4, 'Lemonade', 2016),
+  (9, 5, 'My World 2.0', 2010),
+  (10, 5, 'Purpose', 2015),
+  (11, 6, 'Good Girl Gone Bad', 2007),
+  (12, 6, 'Anti', 2016),
+  (13, 7, 'Doo-Wops & Hooligans', 2010),
+  (14, 8, 'Illuminate', 2016),
+  (15, 10, 'Laundry Service', 2001);
+
+SELECT *
+FROM singers;
+
+SELECT *
+FROM albums;
+
+SELECT singers.name, albums.album_name, albums.release_year
+FROM singers
+JOIN albums ON singers.id = albums.singer_id;
+
+
